@@ -16,7 +16,7 @@
 <script src="https://thegroveschool.co.uk/wp-content/themes/realsmart-cloud/js/modernizr.js" type="text/javascript"></script>
 
 <meta name='robots' content='max-image-preview:large' />
-<title>THE GROVE Help</title><meta name="description" content="THE GROVE Help - " /><link rel="alternate" type="application/rss+xml" title="THE GROVE Help &raquo; Feed" href="https://thegroveschool.co.uk/feed/" />
+<title>Page not found | THE GROVE Help</title><meta name="description" content="THE GROVE Help - " /><link rel="alternate" type="application/rss+xml" title="THE GROVE Help &raquo; Feed" href="https://thegroveschool.co.uk/feed/" />
 <link rel="alternate" type="application/rss+xml" title="THE GROVE &raquo; Comments Feed" href="https://thegroveschool.co.uk/comments/feed/" />
 <link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://thegroveschool.co.uk/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthegroveschool.co.uk%2F" />
 <link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://thegroveschool.co.uk/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthegroveschool.co.uk%2F&#038;format=xml" />
@@ -1045,21 +1045,24 @@ address {
 		<div class="row">
 			<section id="primary" class="content-area col-xs-12 col-sm-9 yellow template-404">
 				<div id="content" class="site-content padder" role="main">
-
-					<article id="post-0" class="post error404 not-found">
+<article id="post-0" class="post error404 not-found">
 						<header class="entry-header">
-							<h2 class="entry-title">Hi! What you like to help?</h2>
+							<h2 class="entry-title">Oops! There’s nothing for you here!</h2>
 						</header><!-- .entry-header -->
 
-<form method="get" id="searchform" action="./" class="form-inline" role="search form">
-  <div class="form-group">
-    <label for="s" class="sr-only assistive-text">Search</label>
-    <input type="text" class="form-control field" id="s" name="s" placeholder="Search …">
-  </div>
-  <button type="submit" class="btn btn-default" id="searchsubmit">Search</button>
-</form>
+						<div class="entry-content">
+							<h4>Either you don't have the authority to view this page or the page could not be found at all!</h4>
+							<p>Try logging in to view this page, if that fails the link might just be wrong.</p>
 
-<div id="search-results"></div>
+								<form method="get" id="searchform" action="./" class="form-inline" role="search form">
+		<div class="form-group">
+			<label for="s" class="sr-only assistive-text">Search</label>
+			<input type="text" class="form-control field" id="s" name="s" value="" placeholder="Search …">
+		</div>
+		<button type="submit" class="btn btn-default" id="searchsubmit"><i class="fa fa-search"></i></button>
+	</form>
+						</div><!-- .entry-content -->
+					</article>
 </div>
 </div>
 </div>
@@ -1108,78 +1111,7 @@ E: <a href="mailto:office@thegroveschool.co.uk">office@thegroveschool.co.uk</a>
         </div>
     </div><!-- #colophon -->
 </footer>
-<script>
-document.getElementById("searchform").addEventListener("submit", function(e) {
-  e.preventDefault();
-  const input = document.getElementById("s").value.trim();
-  if (!input) return;
-  window.location.search = `?s=${encodeURIComponent(input)}`;
-});
 
-document.addEventListener("DOMContentLoaded", function() {
-  const resultsBox = document.getElementById("search-results");
-  const params = new URLSearchParams(window.location.search);
-  const query = params.get("s") || "";
-
-  // Hardcoded pages
-  const pagesIndex = [
-    {
-      id: 4935,
-      folder: "120480",
-      slug: "120484",
-      title: "We not allow to downloading on computers",
-      summary: "At The Grove, we prioritize the integrity and security of our digital environment; therefore, we do not allow the downloading of any hosted content. Unauthorized downloading violates The Grove's established policies and Terms of Service […]"
-    },
-    {
-      id: 4936,
-      folder: "120480",
-      slug: "120485",
-      title: "Sites down",
-      summary: "Sorry for the radio silence! This site was down briefly while we performed some much-needed digital housekeeping. […]"
-    },
-        {
-      id: 4937,
-      folder: "120480",
-      slug: "120483",
-      title: "How to login to The Grove School Website?",
-      summary: "1. Go to thegroveschool.co.uk […]"
-    }
-  ];
-
-  if (!query) {
-    resultsBox.innerHTML = "<p></p>";
-    return;
-  }
-
-  const match = query.match(/\d+/);
-  const num = match ? Math.min(99, Math.max(0, parseInt(match[0], 10))) : -1;
-  const bucket = num >= 0 ? Math.floor(num / 10) * 10 : -1;
-  const folder = bucket >= 0 ? `1204${bucket.toString().padStart(7, "0")}` : null;
-
-  let html = `<h2>Search results for "${query}"</h2>`;
-  pagesIndex.forEach(page => {
-    if (!folder || page.folder === folder) {
-      html += `
-<article id="post-${page.id}" class="post-${page.id} page type-page status-publish hentry smart_visibility_">
-  <header class="entry-header">
-    <div class="postDetails">
-      <h2 class="entry-title">
-        <a href="./answers/${page.folder}/${page.slug}/index.html" title="${page.title}" rel="bookmark">
-          ${page.title}
-        </a>
-      </h2>
-    </div>
-  </header>
-  <div class="entry-summary">
-    <p>${page.summary}</p>
-  </div>
-</article>`;
-    }
-  });
-
-  resultsBox.innerHTML = html;
-});
-</script>
 <script type="speculationrules">
 {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/thegrove/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/realsmart-cloud-nimbus/*","/wp-content/themes/realsmart-cloud/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
 </script>
