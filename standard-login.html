@@ -16,7 +16,7 @@
 <script src="https://thegroveschool.co.uk/wp-content/themes/realsmart-cloud/js/modernizr.js" type="text/javascript"></script>
 
 <meta name='robots' content='max-image-preview:large' />
-<title>THE GROVE Help</title><meta name="description" content="THE GROVE Help - " /><link rel="alternate" type="application/rss+xml" title="THE GROVE Help &raquo; Feed" href="https://thegroveschool.co.uk/feed/" />
+<title>Sign in - THE GROVE Help</title><meta name="description" content="THE GROVE Help - " /><link rel="alternate" type="application/rss+xml" title="THE GROVE Help &raquo; Feed" href="https://thegroveschool.co.uk/feed/" />
 <link rel="alternate" type="application/rss+xml" title="THE GROVE &raquo; Comments Feed" href="https://thegroveschool.co.uk/comments/feed/" />
 <link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://thegroveschool.co.uk/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthegroveschool.co.uk%2F" />
 <link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://thegroveschool.co.uk/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fthegroveschool.co.uk%2F&#038;format=xml" />
@@ -795,36 +795,27 @@ address {
 	<script src="https://thegroveschool.co.uk/wp-content/themes/realsmart-cloud/js/respond.min.js"></script>
 <![endif]-->
 <style>
-
-/* Main container */
-.container-sign-in {
-    width: 350px;
-    margin: 80px auto;   /* centers X */
-    text-align: center;
-}
-
-/* Sign boxes */
-.sign-box {
+  
+.button {
+    display: block;
     background: #e6e6e6;
     padding: 20px;
     margin: 15px 0;
-    font-size: 24px;
+    text-align: center;
+    font-size: 26px;
+    text-decoration: none;
+    transition: 0.2s;
 }
 
-/* Colors */
-.google { color: #1a73e8; }
-.realsmart { color: red; }
-.standard { color: black; }
-
-/* Login button */
-.button {
-    display: inline-block;
-    margin-top: 25px;   /* Y spacing below boxes */
-    padding: 12px 40px;
-    background: #e6e6e6;
+  
+.button-disabled {
+    display: block;
+    background: #969696;
+    padding: 20px;
+    margin: 15px 0;
+    text-align: center;
+    font-size: 26px;
     text-decoration: none;
-    font-size: 22px;
-    color: black;
     transition: 0.2s;
 }
 
@@ -832,8 +823,31 @@ address {
     background: #dcdcdc;
 }
 
-.loginButton {
+/* Colors */
+.google {
     color: #1a73e8;
+}
+
+.google-disabled {
+    color: rgb(66, 66, 66);
+}
+
+.google-disabled:hover {
+    color: rgb(66, 66, 66);
+}
+
+.realsmart {
+    color: red;
+}
+.realsmart-disabled {
+    color: rgb(66, 66, 66);
+}
+.realsmart-disabled:hover {
+    color: rgb(66, 66, 66);
+}
+.standard {
+    color: black;
+    font-size: 24px;
 }
 </style>
 </head>
@@ -853,7 +867,7 @@ address {
 						<span id="school-name-help" class="ellipsis">THE GROVE Help</span>
 					</a>
 
-					<a href="./login.html" class="button loginButton">
+					<a href="" class="button loginButton">
 					Login
 					</a>
 
@@ -1093,19 +1107,36 @@ address {
 
 					<article id="post-0" class="post error404 not-found">
 						<header class="entry-header">
-							<h2 class="entry-title">Hi! What you like to help?</h2>
+							<h2 class="entry-title">Sign in to The Grove Help</h2>
 						</header><!-- .entry-header -->
 
+ <!-- Sign in choices -->
+                <div class="container-sign-in">
+<form action="index.html" method="GET">
 
-<form method="get" id="searchform" action="./" class="form-inline" role="search form">
-  <div class="form-group">
-    <label for="s" class="sr-only assistive-text">Search</label>
-    <input type="text" class="form-control field" id="s" name="s" placeholder="Search …">
-  </div>
-  <button type="submit" class="btn btn-default" id="searchsubmit">Search</button>
+<label><b>Username (Required):</b></label>
+<input type="text" placeholder="Enter Username" name="uname" required>
+
+<br>
+
+<label><b>Password (Required):</b></label>
+<input type="password" placeholder="Enter Password" name="psw" required>
+
+<br>
+
+<label>
+<input type="checkbox" name="remember"> Remember me
+</label>
+
+<br>
+
+<button type="submit">Login</button>
+
 </form>
+                </div>
 
-<div id="search-results"></div>
+            
+
 </div>
 </div>
 </div>
@@ -1154,63 +1185,6 @@ E: <a href="mailto:office@thegroveschool.co.uk">office@thegroveschool.co.uk</a>
         </div>
     </div><!-- #colophon -->
 </footer>
-<script>
-
-// read URL parameters
-const params = new URLSearchParams(window.location.search);
-
-const uname = params.get("uname");
-const remember = params.get("remember");
-
-// stored user
-let user = localStorage.getItem("rs_user") || sessionStorage.getItem("rs_user");
-
-// login from URL
-if(uname){
-
-    if(remember === "on"){
-        localStorage.setItem("rs_user", uname);
-    }else{
-        sessionStorage.setItem("rs_user", uname);
-    }
-
-    user = uname;
-
-    // clean URL
-    window.history.replaceState({}, document.title, "index.html");
-}
-
-// elements
-const loginBtn = document.getElementById("loginButton");
-const greeting = document.querySelector("#user-btn span");
-const logoutBtn = document.querySelector("#cp-logout a");
-
-// apply login state
-if(user){
-
-    document.body.classList.remove("logged-out");
-    document.body.classList.add("logged-in","role-subscriber","learner");
-
-    if(loginBtn) loginBtn.style.display = "none";
-
-    if(greeting) greeting.textContent = "Hi " + user;
-}
-
-// logout
-if(logoutBtn){
-logoutBtn.onclick = function(e){
-
-    e.preventDefault();
-
-    localStorage.removeItem("rs_user");
-    sessionStorage.removeItem("rs_user");
-
-    location.href = "index.html";
-
-};
-}
-
-</script>
 <script>
 document.getElementById("searchform").addEventListener("submit", function(e) {
   e.preventDefault();
@@ -1945,7 +1919,23 @@ $sideBarImages.each(function() {
         f()
     }([])
 </script>
+<script>
 
+document.getElementById("loginForm").onsubmit = function(e){
 
+e.preventDefault();
+
+let uname = document.getElementById("uname").value;
+let remember = document.getElementById("remember").checked;
+
+if(remember){
+    localStorage.setItem("username", uname);
+}
+
+window.location = "index.html";
+
+};
+
+</script>
 </body>
 </html>
